@@ -1,0 +1,46 @@
+---
+title: "Codebook"
+author: "yisong"
+date: "July 25, 2015"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+This is the codebook for the tidy dataset created by run_analysis.R.
+
+| Variables | Description |
+| --------- |:-----------:|
+| subject | ID of the subject whose activity has been recorded |
+| activity | Activity name |
+| fDomain | feature: Time domain signal or Frequency domain signal (Time of Freq) |
+| fDevice | feature: Measuring device (Accelerometer of Gyroscope) |
+| fAcceleration | feature: Acceleration signal (Body or Gravity) |
+| fVariable | feature: (Mean or SD) |
+| fJerk | feature: Jerk signal |
+| fMagnitude | feature: Magnitude of the signal |
+| fAxis | feature: signal in X, Y and Z directions (X, Y or Z) |
+| count | number of datapoints used to compute variable average |
+| average | Average of each variable for each activity and each subject |
+
+Dataset structure
+```{r}
+str(dtTidy)
+```
+
+Key variables of the data table
+```{r}
+key(dtTidy)
+```
+
+Summary fo variables
+```{r}
+summary(dtTidy)
+```
+
+All combinations of features
+```{r}
+dtTidy[, .N, by=c(names(dtTidy)[grep("^f", names(dtTidy))])]
+```
+
+
